@@ -22,7 +22,7 @@ class drawRoom
     rect(700,300,300,300);
     
     
-    //gamesheet
+    //Gamesheet
     fill(0,255,255);
     rect(1000,0,400,1000);
   }
