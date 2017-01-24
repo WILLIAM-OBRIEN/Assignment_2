@@ -8,12 +8,15 @@ String[] rooms=new String[11];
 String susp,wep,room; 
 
 int murderID, weaponID, roomID;
+
+int i,j;
+
 void setup() 
 {
   size(1400,1000);
   table = loadTable("clue.csv", "header");
   println(table.getRowCount() + " total rows in table"); 
-  int i=0;
+  
   for (TableRow row : table.rows()) 
   {
     if(i<6)
@@ -37,7 +40,6 @@ void setup()
 int a=1;
 void draw()
 {
-  int i;
   if( a==1)
   {
     println("\n--Suspects:\n");
@@ -57,4 +59,5 @@ void draw()
     }
     a--;
   }
+ DR.grid(); 
 }

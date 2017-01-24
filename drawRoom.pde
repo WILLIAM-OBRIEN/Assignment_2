@@ -2,6 +2,7 @@ class drawRoom
 {
   void rooms()
   {
+    strokeWeight(5);
     //Study
     rect(0,0,300,200);
     //Hall
@@ -21,9 +22,22 @@ class drawRoom
     //Dining room
     rect(700,300,300,300);
     
-    
     //Gamesheet
     fill(0,255,255);
     rect(1000,0,400,1000);
+  }
+  
+  void grid()
+  {
+    noFill();
+    strokeWeight(1);
+    for(i=0;i<1000;i+=50)
+    {
+      for(j=0;j<1000;j+=50)
+      {
+        rect(j,i+50,50,50);
+      } 
+      rect(i,0,50,50);
+    }
   }
 }
