@@ -1,10 +1,11 @@
+drawRoom DR;
 Table table;
 String[] suspects=new String[20];
 String[] weapons=new String[20];
 String[] rooms=new String[20];
 void setup() 
 {
-  
+  size(1400,1000);
   table = loadTable("clue.csv", "header");
 
   println(table.getRowCount() + " total rows in table"); 
@@ -22,6 +23,8 @@ void setup()
       i++;
       println(i);
   }
+  DR = new drawRoom();
+  DR.rooms();
 }
 
 void draw()
