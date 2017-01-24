@@ -1,6 +1,6 @@
 drawRoom DR;
 selectPlayer MurderCND;
-dice roll;
+rectangle box;
 Table table;
 String[] suspects=new String[6];
 String[] weapons=new String[6];
@@ -35,37 +35,10 @@ void setup()
   }
   DR = new drawRoom();
   MurderCND = new selectPlayer();
-  roll = new dice();
   DR.rooms();
-  MurderCND.select();
+  //MurderCND.select();
 }
-int a=1;
 void draw()
 {
-  if( a==1)
-  {
-    println("\n--Suspects:\n");
-    for(i=0;i<6;i++)
-    {
-      println(suspects[i]+"\n");
-    }
-    println("\n--Weapons:\n");
-    for(i=0;i<6;i++)
-    {
-      println(weapons[i]+"\n");
-    }
-    println("\n--Rooms:\n");
-    for(i=0;i<9;i++)
-    {
-      println(rooms[i]+"\n");
-    }
-    a--;
-  }
-  
   DR.grid(); 
-  
-  if(mousePressed)
-  {
-    roll.di();
-  }
 }
