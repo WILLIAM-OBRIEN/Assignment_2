@@ -1,11 +1,20 @@
-
+PShape tower1;
 static float cell=1000/20;
 
 Cell[][] Grid = new Cell[20][13];
 void setup() 
 {
   size(1000,800);
-  
+  //tower1
+  tower1=createShape();
+  tower1.beginShape();
+  tower1.strokeWeight(3);
+  tower1.fill(255,69,0);
+  tower1.vertex(0,0);
+  tower1.vertex(44,0);
+  tower1.vertex(0,44);
+  tower1.vertex(44,44);
+  tower1.endShape(CLOSE);
   //grid
   for(int x=0;x<Grid.length;x++)
   {
@@ -16,7 +25,6 @@ void setup()
   }
 }
 
-}
 void draw()
 {
   //grid
@@ -39,6 +47,7 @@ void draw()
   rect(650,500,200,50);
   rect(850,0,50,550);
   
+  shape(tower1,mouseX,mouseY);
   mouseCheck();
   println(mouseX,mouseY);
 }
