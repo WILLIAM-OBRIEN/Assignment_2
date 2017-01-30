@@ -75,6 +75,7 @@ void draw()
   fill(255);
   text("Dosh:" + " " + nf(money, 2), 600, 700);
 
+  println(mouseX,mouseY);
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
   

@@ -2,7 +2,6 @@ class Cell
 {
   int x, y;
   Tower InUse = null;//will default to  null, assumes no tower
-  boolean isPath = false;
   
   void buildOn(Tower t)
   {
@@ -16,7 +15,8 @@ class Cell
   
   boolean Build()
   {
-    if(InUse==null && !isPath)
+    if(InUse==null && (x*cell<=100&&y*cell<=0) || (x*cell<=300&&y*cell>=450&&y*cell<=650)
+    ||(x*cell>=50&&x*cell<=150&&y*cell>=100&&y*cell<=350))
     {
       return true;
     }
