@@ -1,9 +1,9 @@
-static float cell=1200/20;
+static float cell=1000/20;
 
 Cell[][] Grid = new Cell[20][13];
 void setup() 
 {
-  size(1200,1000);
+  size(1000,800);
   
   //grid
   for(int x=0;x<Grid.length;x++)
@@ -16,10 +16,28 @@ void setup()
 }
 void draw()
 {
-  fill(0,0,255);
+  //grid
+  fill(#8b4513);
   noStroke();
   rect(0,0,width,height);
+  //path
+  fill(#ffe4b5);
+  rect(150,0,50,50);
+  rect(0,50,200,50);
+  rect(0,100,50,350);
+  rect(50,400,150,50);
+  rect(200,300,50,150);
+  rect(200,250,250,50);
+  rect(450,250,50,250);
+  rect(350,450,100,50);
+  rect(350,500,50,150);
+  rect(400,600,250,50);
+  rect(600,500,50,100);
+  rect(650,500,200,50);
+  rect(850,0,50,550);
+  
   mouseCheck();
+  println(mouseX,mouseY);
 }
 
 void mouseCheck()
@@ -30,24 +48,5 @@ void mouseCheck()
   if( x<Grid.length && y<Grid[0].length)
   {
     Grid[x][y].outlineMe();
-    println("W="+x + "H="+y);
-  }
-}
-
-class Cell
-{
-  int x, y;
-  
-  void outlineMe()
-  {
-    noFill();
-    stroke(0,255,0);
-    rect(x * cell, y * cell, cell, cell);
-  }
-  
-  Cell(int _x, int _y)
-  {
-    x= _x;
-    y= _y;
   }
 }
