@@ -1,71 +1,38 @@
-drawRoom DR;
-selectPlayer MurderCND;
-dice roll;
-Table table;
-String[] suspects=new String[6];
-String[] weapons=new String[6];
-String[] rooms=new String[11];
+float cell=1000/20;
 
-String susp,wep,room; 
-
-int murderID, weaponID, roomID;
-
-int i,j;
-
+Cell[][] Grid = new Cell[20][13];
 void setup() 
 {
-  size(1400,1000);
-  table = loadTable("clue.csv", "header");
-  println(table.getRowCount() + " total rows in table"); 
+  size(1000,1200);
   
-  for (TableRow row : table.rows()) 
+  //grid
+  for(int x=0;x<Grid.length;x++)
   {
-    if(i<6)
+    for(int y=0;y<Grid[0].length;y++)
     {
-      susp = row.getString("Suspects");
-      wep = row.getString("Weapons");
-      suspects[i] = susp;
-      weapons[i] = wep;
+      Grid[x][y]=new Cell(x, y);
     }
-    room = row.getString("Rooms");
-    
-      rooms[i] = room;
-      i++;
-      println(i);
   }
-  DR = new drawRoom();
-  MurderCND = new selectPlayer();
-  roll = new dice();
-  DR.rooms();
-  MurderCND.select();
 }
-int a=1;
 void draw()
 {
-  if( a==1)
+}
+void mouseCheck()
+{}
+class Cell
+{
+  int x, y;
+  
+  void outlineME()
   {
-    println("\n--Suspects:\n");
-    for(i=0;i<6;i++)
-    {
-      println(suspects[i]+"\n");
-    }
-    println("\n--Weapons:\n");
-    for(i=0;i<6;i++)
-    {
-      println(weapons[i]+"\n");
-    }
-    println("\n--Rooms:\n");
-    for(i=0;i<9;i++)
-    {
-      println(rooms[i]+"\n");
-    }
-    a--;
+    noFill();
+    stroke(0,255,0);
+    rect(x + cell, y + cell, cell, cell);
   }
   
-  DR.grid(); 
-  
-  if(mousePressed)
+  Cell(int _x, int _y)
   {
-    roll.di();
+    x= _x;
+    y= _y;
   }
 }
