@@ -1,20 +1,26 @@
 PShape tower1;
+PShape Towers[]=new PShape[10];
 static float cell=1000/20;
 
+//Gameplay variables
+ArrayList <Tower> AllTowers=new ArrayList<Tower>();
+//end
 Cell[][] Grid = new Cell[20][13];
+
+Cell hoverCell=null;
 void setup() 
 {
   size(1000,800);
   //tower1
-  tower1=createShape();
-  tower1.beginShape();
-  tower1.strokeWeight(3);
-  tower1.fill(255,69,0);
-  tower1.vertex(0,0);
-  tower1.vertex(44,0);
-  tower1.vertex(0,44);
-  tower1.vertex(44,44);
-  tower1.endShape(CLOSE);
+  Towers[0]=createShape();
+  Towers[0].beginShape();
+  Towers[0].strokeWeight(3);
+  Towers[0].fill(255,69,0);
+  Towers[0].vertex(3,3);
+  Towers[0].vertex(47,3);
+  Towers[0].vertex(3,47);
+  Towers[0].vertex(47,47);
+  Towers[0].endShape(CLOSE);
   //grid
   for(int x=0;x<Grid.length;x++)
   {
@@ -47,9 +53,14 @@ void draw()
   rect(650,500,200,50);
   rect(850,0,50,550);
   
-  shape(tower1,mouseX,mouseY);
+  for(int i=0;i<AllTowers.size();i++)
+  {
+    AllTowers.get(i).drawMe();
+  }
+  
+  shape(Towers[0],mouseX,mouseY);
   mouseCheck();
-  println(mouseX,mouseY);
+  
 }
 
 void mouseCheck()
@@ -59,6 +70,18 @@ void mouseCheck()
   
   if( x<Grid.length && y<Grid[0].length)
   {
-    Grid[x][y].outlineMe();
+   hoverCell = Grid[x][y];
+   hoverCell.outlineMe();
+  }
+}
+
+void mousePressed()
+{
+  if(hoverCell!=null)
+  {
+    if(hoverCell.Build())
+    {
+      hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y,0));
+    }
   }
 }
