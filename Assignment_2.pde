@@ -1,4 +1,20 @@
+<<<<<<< HEAD
 static float cell=1000/20;
+=======
+drawRoom DR;
+selectPlayer MurderCND;
+rectangle box;
+Table table;
+String[] suspects=new String[6];
+String[] weapons=new String[6];
+String[] rooms=new String[11];
+
+String susp,wep,room; 
+
+int murderID, weaponID, roomID;
+
+int i,j;
+>>>>>>> origin/master
 
 Cell[][] Grid = new Cell[20][13];
 void setup() 
@@ -13,6 +29,7 @@ void setup()
       Grid[x][y]=new Cell(x,y);
     }
   }
+<<<<<<< HEAD
 }
 void draw()
 {
@@ -49,4 +66,14 @@ void mouseCheck()
   {
     Grid[x][y].outlineMe();
   }
+=======
+  DR = new drawRoom();
+  MurderCND = new selectPlayer();
+  DR.rooms();
+  //MurderCND.select();
+}
+void draw()
+{
+  DR.grid(); 
+>>>>>>> origin/master
 }
