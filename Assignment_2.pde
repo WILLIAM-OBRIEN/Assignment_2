@@ -4,6 +4,9 @@ static float cell=1000/20;
 
 //Gameplay variables
 ArrayList <Tower> AllTowers=new ArrayList<Tower>();
+int money = 750;
+int lives = 10;
+int level = 1;
 //end
 Cell[][] Grid = new Cell[20][13];
 
@@ -57,8 +60,22 @@ void draw()
   {
     AllTowers.get(i).drawMe();
   }
+  fill(0);
+  rect(0, 650, 1000, 150); // toolbar
+  fill(0,255,0);
+  rect(900,670,100,50);
   
-  shape(Towers[0],mouseX,mouseY);
+  textSize(25);
+  fill(255);
+  text("START!", 900, 700);
+  fill(255);
+  text("Lives:" + " " + nf(lives, 2), 350, 700);
+  fill(255);
+  text("Level:" + " " + nf(level, 2), 100, 700);
+  fill(255);
+  text("Dosh:" + " " + nf(money, 2), 600, 700);
+
+  //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
   
 }
