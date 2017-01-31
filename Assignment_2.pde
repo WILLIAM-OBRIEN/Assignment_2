@@ -7,6 +7,7 @@ ArrayList <Tower> AllTowers=new ArrayList<Tower>();
 int money = 750;
 int lives = 10;
 int level = 1;
+boolean start;
 //end
 Cell[][] Grid = new Cell[20][13];
 
@@ -62,8 +63,12 @@ void draw()
   }
   fill(0);
   rect(0, 650, 1000, 150); // toolbar
-  fill(0,255,0);
-  rect(900,670,100,50);
+  if(overRect(895,670,95,50))
+  {
+    fill(0,255,0);
+  }
+  stroke(0,255,0);
+  rect(895,670,95,50);//start button
   
   textSize(25);
   fill(255);
@@ -74,7 +79,7 @@ void draw()
   text("Level:" + " " + nf(level, 2), 100, 700);
   fill(255);
   text("Dosh:" + " " + nf(money, 2), 600, 700);
-
+  
   println(mouseX,mouseY);
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
@@ -95,11 +100,18 @@ void mouseCheck()
 
 void mousePressed()
 {
-  if(hoverCell!=null)
+  if(hoverCell!=null && mouseY<=650)
   {
     if(hoverCell.Build())
     {
       hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y,0));
+    }
+  }
+  if(!start)
+  {
+    if(!start)
+    {
+      
     }
   }
 }
