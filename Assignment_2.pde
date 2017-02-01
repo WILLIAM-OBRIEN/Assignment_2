@@ -109,9 +109,9 @@ void mousePressed()
   }
   if(!start)
   {
-    if(!start)
+    if(overRect(895,670,95,50))
     {
-      
+      start=true;
     }
   }
 }
