@@ -1,4 +1,4 @@
-PShape tower1;
+PShape enemy;
 PShape Towers[]=new PShape[10];
 static float cell=1000/20;
 
@@ -26,6 +26,20 @@ void setup()
   Towers[0].vertex(47,47);
   Towers[0].endShape(CLOSE);
   //grid
+  
+  //enemy
+  enemy=createShape();
+  enemy.beginShape();
+  enemy.strokeWeight(2);
+  enemy.fill(218,165,32);
+  enemy.vertex(0,5);
+  enemy.vertex(0,15);
+  enemy.vertex(5,20);
+  enemy.vertex(45,20);
+  enemy.vertex(25,0);
+  enemy.vertex(5,0);
+  enemy.endShape(CLOSE);
+  
   for(int x=0;x<Grid.length;x++)
   {
     for(int y=0;y<Grid[0].length;y++)
