@@ -1,7 +1,7 @@
 PShape enemy;
 PShape Towers[]=new PShape[10];
 static float cell=1000/20;
-
+int cols=20, rows=13;
 //Gameplay variables
 ArrayList <Tower> AllTowers=new ArrayList<Tower>();
 int money = 750;
@@ -9,12 +9,13 @@ int lives = 10;
 int level = 1;
 boolean start;
 //end
-Cell[][] Grid = new Cell[20][13];
+Cell[][] Grid = new Cell[cols][rows];
 
 Cell hoverCell=null;
 void setup() 
 {
-  size(1000,800);
+  size(1000,750);
+  frameRate(30);
   //tower1
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -92,12 +93,12 @@ void draw()
   fill(255);
   text("Level:" + " " + nf(level, 2), 100, 700);
   fill(255);
-  text("Dosh:" + " " + nf(money, 2), 600, 700);
+  text("Cash:" + " " + nf(money, 2), 600, 700);
   
   println(mouseX,mouseY);
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
-  
+  circleMovement();
 }
 
 void mouseCheck()
