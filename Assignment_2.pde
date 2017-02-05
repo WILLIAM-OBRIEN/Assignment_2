@@ -4,6 +4,7 @@ static float cell=1000/20;
 int cols=20, rows=13;
 //Gameplay variables
 ArrayList <Tower> AllTowers=new ArrayList<Tower>();
+ArrayList MonstersList = new ArrayList();
 int money = 750;
 int lives = 10;
 int level = 1;
@@ -98,7 +99,13 @@ void draw()
   println(mouseX,mouseY);
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
-  circleMovement();
+  int Health=10;
+  if(start)
+  {
+    MonstersList.add(new Monsters(Health)); 
+    ((Monsters)MonstersList.get(0)).MonsterMovement();
+  }
+ 
 }
 
 void mouseCheck()
