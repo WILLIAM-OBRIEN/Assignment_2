@@ -8,6 +8,8 @@ ArrayList MonstersList = new ArrayList();
 int money = 750;
 int lives = 10;
 int level = 1;
+int StartMonsters = 5;
+int spawnMonster = StartMonsters;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
@@ -16,7 +18,7 @@ Cell hoverCell=null;
 void setup() 
 {
   size(1000,750);
-  frameRate(60);
+  frameRate(120);
   //tower1
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -100,8 +102,8 @@ void draw()
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
   int Health=10;
-  //if(start)
-  {
+  if(start)
+  { 
     MonstersList.add(new Monsters(Health)); 
     ((Monsters)MonstersList.get(0)).MonsterMovement();
   }

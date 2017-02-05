@@ -1,10 +1,8 @@
 class Monsters
 {
 
-  /*int xpos = 155;
-  int ypos = -1;*/
-  int xpos = 455;
-  int ypos = 260;
+  int xpos = 155;
+  int ypos = -1;
   int speed = 2;
   int HP;
   PShape monster;
@@ -24,61 +22,60 @@ class Monsters
 
   void MonsterMovement() 
   {
-    if (ypos < 65 && xpos == 155 ) 
+    if (ypos<65 && xpos==155) 
     {
       ypos += speed;
-    }
-    else if (ypos <= 65 && xpos > 5) 
+    }//p1
+    else if (ypos==65 && xpos>5 && xpos<850) 
     {
       xpos -= speed;
-    } 
-    else if (xpos <= 5 && ypos<410) 
+    }//p2 
+    else if (xpos==5 && ypos<=410) 
     {
       ypos += speed;
-    }
-    else if (xpos < 205 && ypos>=405) 
+    }//p3
+    else if (xpos<205 && ypos==411) 
     {
       xpos += speed;
-    }
-    else if (xpos >=205 && xpos <454 && ypos>260 && ypos<450) 
+    }//p4
+    else if (xpos==205 && ypos>=259 && ypos<450) 
     {
       ypos -= speed;
-    }
-    else if (xpos <455 && ypos<=260) 
+    }//p5
+    
+    else if (xpos<=455 && ypos==257) 
     {
       xpos += speed;
-    }
-    else if (xpos >454 && ypos<460) 
+    }//p6
+    
+    else if (xpos==457 && ypos<460) 
     {
-      ypos += speed;
-    }
-    else if (xpos > 355 && ypos<=460) 
-    {
-      xpos -= speed;
-    }
-    else if (xpos > 355 && ypos<=460) 
+      ypos += speed;     
+    }//p7
+    else if (xpos>355 && xpos<850 && ypos==461) 
     {
       xpos -= speed;
-    }
-    /*
-    else if (ypos < 220 && ypos >= 140) 
+    }//p8
+    else if (xpos==355 && ypos<610) 
     {
       ypos += speed;
-      if (ypos == 218) 
-      {
-        xLine = true;
-        xLine2 = false;
-      }
-    }
-    else if (ypos < 300 && ypos >= 220) 
+    }//p9
+    else if (xpos<605 && ypos==611) 
     {
-      ypos += speed;
-      xLine = false;
-    }
-    else
+      xpos += speed;
+    }//p10    
+    else if (xpos==605 && ypos>511) 
     {
-      xpos -= speed;
-    }*/
+      ypos -= speed;
+    }//p11 
+    else if (xpos<855 && ypos==511) 
+    {
+      xpos += speed;
+    }//p12
+    else if (xpos==855 && ypos>-100) 
+    {
+      ypos -= speed;
+    }//p13
     translate(xpos, ypos);
     shape(enemy, 0, 0, 40, 25);
 }
