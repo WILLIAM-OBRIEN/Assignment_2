@@ -16,7 +16,7 @@ Cell hoverCell=null;
 void setup() 
 {
   size(1000,750);
-  frameRate(30);
+  frameRate(60);
   //tower1
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -100,7 +100,7 @@ void draw()
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
   int Health=10;
-  if(start)
+  //if(start)
   {
     MonstersList.add(new Monsters(Health)); 
     ((Monsters)MonstersList.get(0)).MonsterMovement();

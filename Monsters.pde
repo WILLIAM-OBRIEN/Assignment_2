@@ -1,17 +1,17 @@
 class Monsters
 {
 
-  int xpos = 155;
-  int ypos = -1;
+  /*int xpos = 155;
+  int ypos = -1;*/
+  int xpos = 455;
+  int ypos = 260;
   int speed = 2;
-  int circleHP;
+  int HP;
   PShape monster;
-  boolean xLine = true;
-  boolean xLine2 = true;
 
   Monsters (int hp) 
   {
-    circleHP = hp;
+    HP = hp;
     if (level % 10 == 0) //if level of 10s == boss
     {
       monster = enemy;//boss enemy
@@ -24,23 +24,43 @@ class Monsters
 
   void MonsterMovement() 
   {
-    
-    /*boolean xLine = true;
-    boolean xLine2 = true;*/
-    if (ypos < 580 ) 
+    if (ypos < 65 && xpos == 155 ) 
     {
       ypos += speed;
     }
-    else if (xpos < 140) 
+    else if (ypos <= 65 && xpos > 5) 
+    {
+      xpos -= speed;
+    } 
+    else if (xpos <= 5 && ypos<410) 
+    {
+      ypos += speed;
+    }
+    else if (xpos < 205 && ypos>=405) 
     {
       xpos += speed;
-      //xLine = false;
     }
-    /*
-    else if (xpos > 60 && xLine2) 
+    else if (xpos >=205 && xpos <454 && ypos>260 && ypos<450) 
+    {
+      ypos -= speed;
+    }
+    else if (xpos <455 && ypos<=260) 
+    {
+      xpos += speed;
+    }
+    else if (xpos >454 && ypos<460) 
+    {
+      ypos += speed;
+    }
+    else if (xpos > 355 && ypos<=460) 
     {
       xpos -= speed;
     }
+    else if (xpos > 355 && ypos<=460) 
+    {
+      xpos -= speed;
+    }
+    /*
     else if (ypos < 220 && ypos >= 140) 
     {
       ypos += speed;
@@ -59,10 +79,8 @@ class Monsters
     {
       xpos -= speed;
     }*/
-    //pushMatrix();
     translate(xpos, ypos);
     shape(enemy, 0, 0, 40, 25);
-    //popMatrix();
 }
     
 }
