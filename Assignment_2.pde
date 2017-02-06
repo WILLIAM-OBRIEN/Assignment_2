@@ -9,8 +9,8 @@ ArrayList MonstersList = new ArrayList();
 int money = 750;
 int lives = 10;
 int level = 1;
-int monsters = 4;
-int copyMonster = monsters;
+int startMonsters= 4;
+int spawnMonsters = startMonsters;
 int Health=10;
 boolean start;
 //end
@@ -104,9 +104,38 @@ void draw()
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
   if(start)
-  { 
-    MonstersList.add(new Monsters(Health)); 
-    ((Monsters)MonstersList.get(0)).MonsterMovement();
+  {
+    spawnTime++;
+    if (spawnTime == 25) 
+    { 
+      if ( spawnMonsters == 0) 
+      {
+        spawnTime = 26;
+      } 
+      else 
+      {
+        MonstersList.add(new Monsters(Health));
+        spawnMonsters--;
+        spawnTime = 0;
+      }
+    }
+
+    for (int j = 0; j < MonstersList.size(); j++) 
+    {
+      if (MonstersList.size() > 0)
+        ((Monsters)MonstersList.get(j)).MonsterMovement();
+    } 
+    if (MonstersList.size() == 0) 
+    {
+      if (spawnTime >= 26) {
+        spawnTime = 0;
+        Health += 50;
+        startMonsters+= 2;
+        level += 1;
+        start = false;
+        spawnMonsters = startMonsters;   
+      }
+    }
   }
  
 }

@@ -83,8 +83,10 @@ class Monsters
         lives--;
         MonstersList.remove(this);
     }
+    pushMatrix();
     translate(xpos, ypos);
     shape(enemy, 0, 0, 40, 25);
+    popMatrix();
 }
     
 }
