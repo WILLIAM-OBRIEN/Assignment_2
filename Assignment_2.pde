@@ -4,6 +4,7 @@ PShape Towers[]=new PShape[10];//contains array of tower shapes
 static float cell=1000/20;//decides size of cells
 int cols=20, rows=13;//decides size of grid map
 int Timer = 0;
+int gamestate=0;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();
@@ -94,128 +95,135 @@ void setup()
 
 void draw()
 {
-  drawBackground();//just calls to a function in a different tab 
-  
-  for(int i=0;i<TowersList.size();i++)
+  if(gamestate==0)
   {
-    TowersList.get(i).drawMe();
-  }//draws the towers
-  //if mouse over start button
-  fill(#DC143C);
-  if(overRect(895,670,95,40))
-  {
-    fill(0,255,0);
+    intro();
   }
-  noStroke();
-  
-  rect(895,670,95,40,5);//start button
-  
-  //game stats text
-  textSize(25);
-  fill(255);
-  if(level==1)
+  else if(gamestate==1)
   {
-    text("START!", 900, 700);
-  }
-  else
-  {
-    text("N.LVL!", 905, 700);
-  }
-  fill(255);
-  text("Lives:" + " " + nf(lives, 2), 350, 700);
-  fill(255);
-  text("Level:" + " " + nf(level, 2), 100, 700);
-  fill(255);
-  if(money<50)
-  {fill(255,0,0);}//if not enough money
-  text("Cash:" + " " + nf(money, 2), 600, 700);
-  
-  //checks where mouse is to draw grid outline
-  mouseCheck();
-  //start button condition creates the spawns for monsters
-  if(start)
-  {
-    if(level%10==0)
-    {
-      Timer++;
-      if (Timer == 20) 
-      { // spawn rate
-        BossList.add(new BossMonster(bossHealth));
-        spawnBoss--;
-        if ( spawnBoss == 0) 
-        {
-          Timer = 21;
-        } 
-        else 
-        {
-          Timer = 0;
-        }
-      }
-      for (int j = 0; j < BossList.size(); j++) 
-      {
-        if (BossList.size() > 0) 
-        {
-          ((BossMonster)BossList.get(j)).MonsterMovement();
-        }
-      }
-
-      if (BossList.size() == 0) 
-      {
-        if (Timer >= 26) 
-        {
-          Timer = 0;
-          bossHealth += 500;
-          startBoss += 1;
-          level += 1;
-          start = false;
-          spawnBoss = startBoss;
-        }
-      }
-    }
+    drawBackground();//just calls to a function in a different tab 
     
+    for(int i=0;i<TowersList.size();i++)
+    {
+      TowersList.get(i).drawMe();
+    }//draws the towers
+    //if mouse over start button
+    fill(#DC143C);
+    if(overRect(895,670,95,40))
+    {
+      fill(0,255,0);
+    }
+    noStroke();
+    
+    rect(895,670,95,40,5);//start button
+    
+    //game stats text
+    textSize(25);
+    fill(255);
+    if(level==1)
+    {
+      text("START!", 900, 700);
+    }
     else
     {
-      Timer++;
-      if (Timer == 25) 
-      { 
-        if ( spawnMonsters == 0) 
+      text("N.LVL!", 905, 700);
+    }
+    fill(255);
+    text("Lives:" + " " + nf(lives, 2), 350, 700);
+    fill(255);
+    text("Level:" + " " + nf(level, 2), 100, 700);
+    fill(255);
+    if(money<50)
+    {fill(255,0,0);}//if not enough money
+    text("Cash:" + " " + nf(money, 2), 600, 700);
+    
+    //checks where mouse is to draw grid outline
+    mouseCheck();
+    //start button condition creates the spawns for monsters
+    if(start)
+    {
+      if(level%10==0)
+      {
+        Timer++;
+        if (Timer == 20) 
+        { // spawn rate
+          BossList.add(new BossMonster(bossHealth));
+          spawnBoss--;
+          if ( spawnBoss == 0) 
+          {
+            Timer = 21;
+          } 
+          else 
+          {
+            Timer = 0;
+          }
+        }
+        for (int j = 0; j < BossList.size(); j++) 
         {
-          Timer = 26;
-        } 
-        else 
+          if (BossList.size() > 0) 
+          {
+            ((BossMonster)BossList.get(j)).MonsterMovement();
+          }
+        }
+  
+        if (BossList.size() == 0) 
         {
-          MonstersList.add(new Monsters(Health));
-          spawnMonsters--;
-          Timer = 0;
+          if (Timer >= 26) 
+          {
+            Timer = 0;
+            bossHealth += 500;
+            startBoss += 1;
+            level += 1;
+            start = false;
+            spawnBoss = startBoss;
+          }
         }
       }
-  
-      for (int j = 0; j < MonstersList.size(); j++) 
-      {
-        if (MonstersList.size() > 0)
-        {
-          ((Monsters)MonstersList.get(j)).MonsterMovement();
-        }
-      }//gives monsters movement
       
-      if (MonstersList.size() == 0) 
+      else
       {
-        if (Timer >= 26) {
-          Timer = 0;
-          Health += 20;
-          startMonsters+= 2;
-          level += 1;
-          start = false;
-          spawnMonsters = startMonsters;   
+        Timer++;
+        if (Timer == 25) 
+        { 
+          if ( spawnMonsters == 0) 
+          {
+            Timer = 26;
+          } 
+          else 
+          {
+            MonstersList.add(new Monsters(Health));
+            spawnMonsters--;
+            Timer = 0;
+          }
         }
-      }
-    }//when all monsters gone adds conditions for next round
-  } 
-  
-  for (int i=0; i<TowersList.size(); i++) 
-  {
-    TowersList.get(i).shoot();
-  }//responsible for allowing towers to damage the monsters
+    
+        for (int j = 0; j < MonstersList.size(); j++) 
+        {
+          if (MonstersList.size() > 0)
+          {
+            ((Monsters)MonstersList.get(j)).MonsterMovement();
+          }
+        }//gives monsters movement
+        
+        if (MonstersList.size() == 0) 
+        {
+          if (Timer >= 26) {
+            Timer = 0;
+            Health += 20;
+            startMonsters+= 2;
+            level += 1;
+            start = false;
+            spawnMonsters = startMonsters;   
+          }
+        }
+      }//when all monsters gone adds conditions for next round
+    } 
+    
+    for (int i=0; i<TowersList.size(); i++) 
+    {
+      TowersList.get(i).shoot();
+    }//responsible for allowing towers to damage the monsters
+  }//end gamestate1
 }//END DRAW
 
 void mouseCheck()
@@ -232,32 +240,45 @@ void mouseCheck()
 
 void mousePressed()
 {
-  if(CheckHover!=null && mouseY<=650)
+  if(gamestate==0)
   {
-    if(CheckHover.Build())
+    if(overRect(400,600,200,100))
     {
-      if(money>=towerCost)
+      gamestate=1;
+    }
+  }
+  else if(gamestate==1)
+  {
+    if(CheckHover!=null && mouseY<=650)
+    {
+      if(CheckHover.Build())
       {
-        CheckHover.buildOn(new Tower(CheckHover.x,CheckHover.y));
-        money-=towerCost;
+        if(money>=towerCost)
+        {
+          CheckHover.buildOn(new Tower(CheckHover.x,CheckHover.y));
+          money-=towerCost;
+        }
       }
-    }
-  }//allows building of towers assuming its on the grid aswell as having enough money
-  if(!start)
-  {
-    if(overRect(895,670,95,40))
+    }//allows building of towers assuming its on the grid aswell as having enough money
+    if(!start)
     {
-      start=true;
-    }
-  }//start button interaction
+      if(overRect(895,670,95,40))
+      {
+        start=true;
+      }
+    }//start button interaction
+  }
 }
 void keyPressed()
 {
-  if(!start)
+  if(gamestate==1)
   {
-    if(keyCode==' ')
+    if(!start)
     {
-      start=true;
-    }
-  }//start button interaction
+      if(keyCode==' ')
+      {
+        start=true;
+      }
+    }//start button interaction
+  }
 }
