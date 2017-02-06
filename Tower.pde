@@ -2,17 +2,10 @@ class Tower
 {
   int cellX;
   int cellY;
-    PVector location = new PVector();
-  float r = 40;
-  float aX = r;
-  float aY = r;
-  int radius = 100;
-  int Tfr = 0;
-  int inReach = 80;
-  PImage towers;
+  PVector location = new PVector();
+  int FireRate = 0;
+  int Range = 120;
   boolean upgrade;
-  float towerX, towerY;
-  int tint;
   
   void drawMe()
   {
@@ -23,21 +16,20 @@ class Tower
   {
     cellX=x;
     cellY=y;
-    location.x = x;
-    location.y = y;
+    location.x = cellX*cell;
+    location.y = cellY*cell;
   }
   void shoot()
   {  
     if (MonstersList.size() > 0) 
     {
-      if (dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y) < inReach) 
+      if (dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y) < Range) 
       {
-        Tfr++;
-        println((dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y)));
-        if(Tfr==5)
+        FireRate++; 
+        if(FireRate==5)
         {
           ((Monsters)MonstersList.get(0)).damage(); 
-          Tfr = 0;
+          FireRate = 0;
         }
       }
     }

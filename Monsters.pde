@@ -4,10 +4,11 @@ class Monsters
   int xpos = 155;
   int ypos = -1;
   int speed = 2;
-  int HP;
+  float HP;
   PShape monster;
-
-  Monsters (int hp) 
+  float HealthBarWidth=45;
+  float HealthRemains;
+  Monsters (float hp) 
   {
     HP = hp;
     if (level % 10 == 0) //if level of 10s == boss
@@ -23,7 +24,7 @@ class Monsters
   void damage() 
   {
     HP -= 5;
-    println("Hit!");
+    println("Hit!");  
   }
   void MonsterMovement() 
   {
@@ -97,7 +98,26 @@ class Monsters
     pushMatrix();
     translate(xpos, ypos);
     shape(enemy, 0, 0, 40, 25);
+    // Change color
+    if (HP < 25)
+    {
+      fill(255, 0, 0);
+    }  
+    else if (HP < 50)
+    {
+      fill(255, 200, 0);
+    }
+    else
+    {
+      fill(0, 255, 0);
+    }
+    
+    // Draw bar
+    noStroke();
+    HealthRemains = (HP / Health) * HealthBarWidth;
+    println(HealthRemains , HP);
+    rect(-10, -15, HealthRemains, 10);    
     popMatrix();
-}
+  }
     
 }

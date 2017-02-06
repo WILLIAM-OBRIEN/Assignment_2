@@ -11,7 +11,7 @@ int lives = 10;
 int level = 1;
 int startMonsters= 5;
 int spawnMonsters = startMonsters;
-int Health=100;
+float Health=100;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
