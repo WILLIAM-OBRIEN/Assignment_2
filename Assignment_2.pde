@@ -20,7 +20,7 @@ Cell hoverCell=null;
 void setup() 
 {
   size(1000,725);
-  frameRate(60);
+  frameRate(30);
   //tower1
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -106,8 +106,7 @@ void draw()
   text("Level:" + " " + nf(level, 2), 100, 700);
   fill(255);
   text("Cash:" + " " + nf(money, 2), 600, 700);
-  
-  println(mouseX,mouseY);
+  //checks where mouse is to draw grid outline
   mouseCheck();
   //start button condition
   if(start)
@@ -145,9 +144,9 @@ void draw()
     }
   }
   
-  for (int i=0; i<towers.size(); i++) 
+  for (int i=0; i<AllTowers.size(); i++) 
   {
-    ((Tower)towers.get(i)).shoot();
+    AllTowers.get(i).shoot();
   }
 }
 

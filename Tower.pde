@@ -8,7 +8,7 @@ class Tower
   float aY = r;
   int radius = 100;
   int Tfr = 0;
-  int inReach = 160;
+  int inReach = 80;
   PImage towers;
   boolean upgrade;
   float towerX, towerY;
@@ -32,7 +32,9 @@ class Tower
     {
       if (dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y) < inReach) 
       {
-        
+        Tfr++;
+        println((dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y)));
+        if(Tfr==5)
         {
           ((Monsters)MonstersList.get(0)).damage(); 
           Tfr = 0;

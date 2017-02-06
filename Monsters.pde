@@ -22,7 +22,7 @@ class Monsters
   
   void damage() 
   {
-    HP -= 100;
+    HP -= 5;
     println("Hit!");
   }
   void MonsterMovement() 
