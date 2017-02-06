@@ -1,6 +1,6 @@
 class BossMonster extends Monsters
 {
-  float  hitP;
+  float  hitP=bossHealth;
 
   BossMonster (float hitP) {
   super(hitP);}

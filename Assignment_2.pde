@@ -10,14 +10,14 @@ ArrayList MonstersList = new ArrayList();
 ArrayList BossList = new ArrayList();
 int money = 1000;
 int lives = 10;
-int level = 10;
+int level = 1;
 int towerCost = 300;
 int startMonsters= 5;
 int startBoss= 1;
 int spawnMonsters = startMonsters;
 int spawnBoss = startBoss;
 float Health=100;
-float bossHealth=10;
+float bossHealth=2000;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];

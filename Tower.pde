@@ -21,17 +21,35 @@ class Tower
   }
   void shoot()
   {  
-    if (MonstersList.size() > 0) 
+    if(level%10==0)
     {
-      if (dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y) < Range) 
+      if (BossList.size() > 0) 
       {
-        FireRate++; 
-        if(FireRate==5)
+        if (dist(((BossMonster)BossList.get(0)).xpos, ((BossMonster)BossList.get(0)).ypos, location.x, location.y) < Range) 
         {
-          ((Monsters)MonstersList.get(0)).damage(); 
-          FireRate = 0;
+          FireRate++; 
+          if(FireRate==5)
+          {
+            ((BossMonster)BossList.get(0)).damage(); 
+            FireRate = 0;
+          }
         }
       }
-    }
-  }
-}
+    }//end boss if
+    else
+    {
+      if (MonstersList.size() > 0) 
+      {
+        if (dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y) < Range) 
+        {
+          FireRate++; 
+          if(FireRate==5)
+          {
+            ((Monsters)MonstersList.get(0)).damage(); 
+            FireRate = 0;
+          }
+        }
+      }
+    }//end monster else 
+  }//end void shoot
+}//end class tower
