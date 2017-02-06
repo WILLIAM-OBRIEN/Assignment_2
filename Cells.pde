@@ -32,7 +32,7 @@ class Cell
   void outlineMe()
   {
     noFill();
-    if(Build())
+    if(Build()&& money>=towerCost)
     {
       stroke(0,255,255);
     }

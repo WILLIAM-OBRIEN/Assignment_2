@@ -6,7 +6,7 @@ class Monsters
   int speed = 2;
   float HP;
   PShape monster;
-  float HealthBarWidth=45;
+  float HealthBarWidth=40;
   float HealthRemains;
   Monsters (float hp) 
   {
@@ -24,7 +24,6 @@ class Monsters
   void damage() 
   {
     HP -= 5;
-    println("Hit!");  
   }
   void MonsterMovement() 
   {
@@ -87,7 +86,7 @@ class Monsters
     if (HP < 0) 
     {  
         MonstersList.remove(this);
-        money += 5;
+        money += 50;
     }
     //pass endpoint loss
     if (ypos < -5) 
@@ -115,8 +114,7 @@ class Monsters
     // Draw bar
     noStroke();
     HealthRemains = (HP / Health) * HealthBarWidth;
-    println(HealthRemains , HP);
-    rect(-10, -15, HealthRemains, 10);    
+    rect(0, -15, HealthRemains, 10);    
     popMatrix();
   }
     

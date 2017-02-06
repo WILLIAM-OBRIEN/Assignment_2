@@ -6,21 +6,21 @@ int spawnTime = 0;
 //Gameplay variables
 ArrayList <Tower> AllTowers=new ArrayList<Tower>();
 ArrayList MonstersList = new ArrayList();
-int money = 60;
+int money = 1000;
 int lives = 10;
 int level = 1;
+int towerCost = 300;
 int startMonsters= 5;
 int spawnMonsters = startMonsters;
 float Health=100;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
-
 Cell hoverCell=null;
 void setup() 
 {
   size(1000,725);
-  frameRate(30);
+  frameRate(20);
   //tower1
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -105,7 +105,10 @@ void draw()
   fill(255);
   text("Level:" + " " + nf(level, 2), 100, 700);
   fill(255);
+  if(money<50)
+  {fill(255,0,0);}//if not enough money
   text("Cash:" + " " + nf(money, 2), 600, 700);
+  
   //checks where mouse is to draw grid outline
   mouseCheck();
   //start button condition
@@ -135,7 +138,7 @@ void draw()
     {
       if (spawnTime >= 26) {
         spawnTime = 0;
-        Health += 50;
+        Health += 20;
         startMonsters+= 2;
         level += 1;
         start = false;
@@ -168,12 +171,26 @@ void mousePressed()
   {
     if(hoverCell.Build())
     {
-      hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y));
+      if(money>=towerCost)
+      {
+        hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y));
+        money-=towerCost;
+      }
     }
   }
   if(!start)
   {
     if(overRect(895,670,95,40))
+    {
+      start=true;
+    }
+  }
+}
+void keyPressed()
+{
+  if(!start)
+  {
+    if(keyCode==' ')
     {
       start=true;
     }
