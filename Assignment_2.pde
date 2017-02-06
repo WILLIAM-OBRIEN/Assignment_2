@@ -4,14 +4,14 @@ static float cell=1000/20;
 int cols=20, rows=13;
 int spawnTime = 0;
 //Gameplay variables
-ArrayList <Tower> AllTowers=new ArrayList<Tower>();
+ArrayList <Tower> AllTowers = new ArrayList<Tower>();
 ArrayList MonstersList = new ArrayList();
 int money = 60;
 int lives = 10;
 int level = 1;
 int startMonsters= 5;
 int spawnMonsters = startMonsters;
-int Health=10;
+int Health=100;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
@@ -127,16 +127,18 @@ void draw()
       }
     }
 
-    for (int j = 0; j < MonstersList.size(); j++) 
+    for (int i = 0; i < MonstersList.size(); i++) 
     {
       if (MonstersList.size() > 0)
-        ((Monsters)MonstersList.get(j)).MonsterMovement();
+      {
+        ((Monsters)MonstersList.get(i)).MonsterMovement();
+      }      
     } 
     if (MonstersList.size() == 0) 
     {
       if (spawnTime >= 26) {
         spawnTime = 0;
-        Health += 50;
+        Health += 10;
         startMonsters+= 2;
         level += 1;
         start = false;
@@ -165,7 +167,7 @@ void mousePressed()
   {
     if(hoverCell.Build())
     {
-      hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y,0));
+      hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y));
     }
   }
   if(!start)
