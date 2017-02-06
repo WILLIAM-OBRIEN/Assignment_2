@@ -1,4 +1,5 @@
 PShape enemy;//is the enemy shape
+PShape boss;//is the boss shape
 PShape Towers[]=new PShape[10];//contains array of tower shapes
 static float cell=1000/20;//decides size of cells
 int cols=20, rows=13;//decides size of grid map
@@ -6,6 +7,7 @@ int Timer = 0;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();
+ArrayList BossList = new ArrayList();
 int money = 1000;
 int lives = 10;
 int level = 1;
@@ -62,7 +64,21 @@ void setup()
   enemy.vertex(45,20);
   enemy.vertex(25,0);
   enemy.vertex(5,0);
-  enemy.endShape(CLOSE);
+  enemy.endShape(CLOSE); 
+  //boss
+  boss=createShape();
+  boss.beginShape();
+  boss.strokeWeight(2);
+  boss.fill(#F791EC);
+  boss.vertex(5,5);
+  boss.vertex(15,15);
+  boss.vertex(35,15);
+  boss.vertex(45,5);
+  boss.vertex(45,35);
+  boss.vertex(35,45);
+  boss.vertex(15,45);
+  boss.vertex(5,35);
+  boss.endShape(CLOSE);
   
   for(int x=0;x<Grid.length;x++)
   {
