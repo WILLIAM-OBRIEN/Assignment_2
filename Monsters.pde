@@ -20,10 +20,6 @@ class Monsters
     }
   }
 
-  void damage() 
-    {
-      HP -= 5;
-    }
   void MonsterMovement() 
   {
     if (ypos<65 && xpos==155) 
