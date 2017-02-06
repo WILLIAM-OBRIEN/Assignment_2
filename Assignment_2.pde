@@ -6,10 +6,10 @@ int spawnTime = 0;
 //Gameplay variables
 ArrayList <Tower> AllTowers=new ArrayList<Tower>();
 ArrayList MonstersList = new ArrayList();
-int money = 750;
+int money = 60;
 int lives = 10;
 int level = 1;
-int startMonsters= 4;
+int startMonsters= 5;
 int spawnMonsters = startMonsters;
 int Health=10;
 boolean start;
@@ -108,8 +108,8 @@ void draw()
   text("Cash:" + " " + nf(money, 2), 600, 700);
   
   println(mouseX,mouseY);
-  //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
+  //start button condition
   if(start)
   {
     spawnTime++;

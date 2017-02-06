@@ -34,4 +34,10 @@ void drawBackground()
   rect(600,500,50,100);
   rect(650,500,200,50);
   rect(850,0,50,550);
+  
+  fill(150,180);
+  rect(0, 650, 1000, 150); // toolbar
+  fill(#B0C4DE);
+  stroke(0);
+  rect(-10,650,1050,10);//toolbar top
 }

@@ -77,7 +77,13 @@ class Monsters
       ypos -= speed;
     }//p13
     
-    //health loss
+    //loses hp
+    if (HP < 0) 
+    {  
+        MonstersList.remove(this);
+        money += 5;
+    }
+    //pass endpoint loss
     if (ypos < -5) 
     {
         lives--;
