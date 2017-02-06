@@ -19,7 +19,7 @@ Cell[][] Grid = new Cell[cols][rows];
 Cell hoverCell=null;
 void setup() 
 {
-  size(1000,750);
+  size(1000,725);
   frameRate(120);
   //tower1
   Towers[0]=createShape();
@@ -81,13 +81,13 @@ void draw()
   {
     AllTowers.get(i).drawMe();
   }
-  fill(0);
-  rect(0, 650, 1000, 150); // toolbar
+  fill(#DC143C);
   if(overRect(895,670,95,40))
   {
     fill(0,255,0);
   }
-  stroke(0,255,0);
+  noStroke();
+  
   rect(895,670,95,40,5);//start button
   
   textSize(25);
