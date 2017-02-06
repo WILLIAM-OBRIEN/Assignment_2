@@ -11,7 +11,7 @@ int lives = 10;
 int level = 1;
 int startMonsters= 5;
 int spawnMonsters = startMonsters;
-int Health=10;
+int Health=100;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
@@ -20,7 +20,7 @@ Cell hoverCell=null;
 void setup() 
 {
   size(1000,725);
-  frameRate(120);
+  frameRate(60);
   //tower1
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -144,7 +144,11 @@ void draw()
       }
     }
   }
- 
+  
+  for (int i=0; i<towers.size(); i++) 
+  {
+    ((Tower)towers.get(i)).shoot();
+  }
 }
 
 void mouseCheck()
@@ -165,7 +169,7 @@ void mousePressed()
   {
     if(hoverCell.Build())
     {
-      hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y,0));
+      hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y));
     }
   }
   if(!start)

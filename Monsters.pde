@@ -19,7 +19,12 @@ class Monsters
       monster = enemy;//normal enemy
     }
   }
-
+  
+  void damage() 
+  {
+    HP -= 100;
+    println("Hit!");
+  }
   void MonsterMovement() 
   {
     if (ypos<65 && xpos==155) 
