@@ -61,6 +61,21 @@ void draw()
   fill(#8b4513);
   noStroke();
   rect(0,0,width,height);
+  //pathOutline
+  fill(100);
+  rect(140,0,70,100);
+  rect(0,40,210,70);
+  rect(0,100,60,350);
+  rect(0,390,250,70);
+  rect(190,250,70,210);
+  rect(190,240,310,70);
+  rect(440,240,70,260);
+  rect(340,440,170,70);
+  rect(340,490,70,160);
+  rect(390,590,270,60);
+  rect(590,490,70,100);
+  rect(640,490,270,70);//
+  rect(840,0,70,550);
   //path
   fill(#ffe4b5);
   rect(150,0,50,50);
@@ -83,16 +98,23 @@ void draw()
   }
   fill(0);
   rect(0, 650, 1000, 150); // toolbar
-  if(overRect(895,670,95,50))
+  if(overRect(895,670,95,40))
   {
     fill(0,255,0);
   }
   stroke(0,255,0);
-  rect(895,670,95,50);//start button
+  rect(895,670,95,40,5);//start button
   
   textSize(25);
   fill(255);
-  text("START!", 900, 700);
+  if(level==1)
+  {
+    text("START!", 900, 700);
+  }
+  else
+  {
+    text("N.LVL!", 905, 700);
+  }
   fill(255);
   text("Lives:" + " " + nf(lives, 2), 350, 700);
   fill(255);
@@ -163,7 +185,7 @@ void mousePressed()
   }
   if(!start)
   {
-    if(overRect(895,670,95,50))
+    if(overRect(895,670,95,40))
     {
       start=true;
     }
