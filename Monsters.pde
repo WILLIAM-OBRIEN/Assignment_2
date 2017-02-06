@@ -9,15 +9,8 @@ class Monsters
   float HealthRemains;
   Monsters (float hp) 
   {
-    HP = hp;
-    if (level % 10 == 0) //if level of 10s == boss
-    {
-      monster = enemy;//boss enemy
-    } 
-    else 
-    {
-      monster = enemy;//normal enemy
-    }
+    HP = hp; 
+    monster = enemy;//normal enemy
   }
   
   void damage() 
@@ -84,18 +77,34 @@ class Monsters
     //loses hp
     if (HP < 0) 
     {  
+      if(level%10==0)
+      {
+        BossList.remove(this);
+        money += 500;
+      }
+      else
+      {
         MonstersList.remove(this);
         money += 50;
+      }
     }
     //pass endpoint loss
     if (ypos < -5) 
     {
+      if(level%10==0)
+      {
+        lives-=3;
+        BossList.remove(this);
+      }
+      else
+      {
         lives--;
         MonstersList.remove(this);
+      }
     }
     pushMatrix();
     translate(xpos, ypos);
-    shape(enemy, 0, 0, 40, 25);
+    shape(monster, 0, 0 );
     // Change color
     if (HP < 25)
     {

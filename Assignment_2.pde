@@ -10,11 +10,14 @@ ArrayList MonstersList = new ArrayList();
 ArrayList BossList = new ArrayList();
 int money = 1000;
 int lives = 10;
-int level = 1;
+int level = 10;
 int towerCost = 300;
 int startMonsters= 5;
+int startBoss= 1;
 int spawnMonsters = startMonsters;
+int spawnBoss = startBoss;
 float Health=100;
+float bossHealth=10;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
@@ -22,7 +25,7 @@ Cell CheckHover=null;
 void setup() 
 {
   size(1000,725);
-  frameRate(40);
+  frameRate(120);
   //tower1 shape
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -70,14 +73,14 @@ void setup()
   boss.beginShape();
   boss.strokeWeight(2);
   boss.fill(#F791EC);
-  boss.vertex(5,5);
-  boss.vertex(15,15);
-  boss.vertex(35,15);
-  boss.vertex(45,5);
-  boss.vertex(45,35);
-  boss.vertex(35,45);
-  boss.vertex(15,45);
-  boss.vertex(5,35);
+  boss.vertex(0,0);
+  boss.vertex(10,10);
+  boss.vertex(30,10);
+  boss.vertex(40,0);
+  boss.vertex(40,30);
+  boss.vertex(30,40);
+  boss.vertex(10,40);
+  boss.vertex(0,30);
   boss.endShape(CLOSE);
   
   for(int x=0;x<Grid.length;x++)
@@ -132,41 +135,82 @@ void draw()
   //start button condition creates the spawns for monsters
   if(start)
   {
-    Timer++;
-    if (Timer == 25) 
-    { 
-      if ( spawnMonsters == 0) 
+    if(level%10==0)
+    {
+      Timer++;
+      if (Timer == 20) 
+      { // spawn rate
+        BossList.add(new BossMonster(bossHealth));
+        spawnBoss--;
+        if ( spawnBoss == 0) 
+        {
+          Timer = 21;
+        } 
+        else 
+        {
+          Timer = 0;
+        }
+      }
+      for (int j = 0; j < BossList.size(); j++) 
       {
-        Timer = 26;
-      } 
-      else 
+        if (BossList.size() > 0) 
+        {
+          ((BossMonster)BossList.get(j)).MonsterMovement();
+        }
+      }
+
+      if (BossList.size() == 0) 
       {
-        MonstersList.add(new Monsters(Health));
-        spawnMonsters--;
-        Timer = 0;
+        if (Timer >= 26) 
+        {
+          Timer = 0;
+          bossHealth += 500;
+          startBoss += 1;
+          level += 1;
+          start = false;
+          spawnBoss = startBoss;
+        }
       }
     }
-
-    for (int j = 0; j < MonstersList.size(); j++) 
-    {
-      if (MonstersList.size() > 0)
-      {
-        ((Monsters)MonstersList.get(j)).MonsterMovement();
-      }
-    }//gives monsters movement
     
-    if (MonstersList.size() == 0) 
+    else
     {
-      if (Timer >= 26) {
-        Timer = 0;
-        Health += 20;
-        startMonsters+= 2;
-        level += 1;
-        start = false;
-        spawnMonsters = startMonsters;   
+      Timer++;
+      if (Timer == 25) 
+      { 
+        if ( spawnMonsters == 0) 
+        {
+          Timer = 26;
+        } 
+        else 
+        {
+          MonstersList.add(new Monsters(Health));
+          spawnMonsters--;
+          Timer = 0;
+        }
+      }
+  
+      for (int j = 0; j < MonstersList.size(); j++) 
+      {
+        if (MonstersList.size() > 0)
+        {
+          ((Monsters)MonstersList.get(j)).MonsterMovement();
+        }
+      }//gives monsters movement
+      
+      if (MonstersList.size() == 0) 
+      {
+        if (Timer >= 26) {
+          Timer = 0;
+          Health += 20;
+          startMonsters+= 2;
+          level += 1;
+          start = false;
+          spawnMonsters = startMonsters;   
+        }
       }
     }//when all monsters gone adds conditions for next round
-  }
+  } 
   
   for (int i=0; i<TowersList.size(); i++) 
   {
