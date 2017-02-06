@@ -2,14 +2,16 @@ PShape enemy;
 PShape Towers[]=new PShape[10];
 static float cell=1000/20;
 int cols=20, rows=13;
+int spawnTime = 0;
 //Gameplay variables
 ArrayList <Tower> AllTowers=new ArrayList<Tower>();
 ArrayList MonstersList = new ArrayList();
 int money = 750;
 int lives = 10;
 int level = 1;
-int StartMonsters = 5;
-int spawnMonster = StartMonsters;
+int monsters = 4;
+int copyMonster = monsters;
+int Health=10;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
@@ -101,7 +103,6 @@ void draw()
   println(mouseX,mouseY);
   //shape(Towers[0],mouseX,mouseY);
   mouseCheck();
-  int Health=10;
   if(start)
   { 
     MonstersList.add(new Monsters(Health)); 

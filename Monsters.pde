@@ -76,6 +76,13 @@ class Monsters
     {
       ypos -= speed;
     }//p13
+    
+    //health loss
+    if (ypos < -5) 
+    {
+        lives--;
+        MonstersList.remove(this);
+    }
     translate(xpos, ypos);
     shape(enemy, 0, 0, 40, 25);
 }
