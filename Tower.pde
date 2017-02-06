@@ -8,7 +8,7 @@ class Tower
   
   void drawMe()
   {
-    shape(Towers[0],cellX*cell,cellY*cell);
+    shape(Towers[1],cellX*cell,cellY*cell);
   }
   
   Tower(int x, int y, int sprite)
