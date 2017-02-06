@@ -1,6 +1,5 @@
 class Monsters
 {
-
   int xpos = 155;
   int ypos = -1;
   int speed = 2;

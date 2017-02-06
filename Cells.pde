@@ -8,7 +8,7 @@ class Cell
     if(Build())
     {
       InUse=t;
-      AllTowers.add(InUse);
+      TowersList.add(InUse);
       println("Tower Built!\n");
     }
   }

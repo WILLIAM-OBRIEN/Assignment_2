@@ -1,10 +1,10 @@
-PShape enemy;
-PShape Towers[]=new PShape[10];
-static float cell=1000/20;
-int cols=20, rows=13;
-int spawnTime = 0;
+PShape enemy;//is the enemy shape
+PShape Towers[]=new PShape[10];//contains array of tower shapes
+static float cell=1000/20;//decides size of cells
+int cols=20, rows=13;//decides size of grid map
+int Timer = 0;
 //Gameplay variables
-ArrayList <Tower> AllTowers=new ArrayList<Tower>();
+ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();
 int money = 1000;
 int lives = 10;
@@ -16,12 +16,12 @@ float Health=100;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
-Cell hoverCell=null;
+Cell CheckHover=null;
 void setup() 
 {
   size(1000,725);
-  frameRate(20);
-  //tower1
+  frameRate(40);
+  //tower1 shape
   Towers[0]=createShape();
   Towers[0].beginShape();
   Towers[0].strokeWeight(3);
@@ -31,7 +31,7 @@ void setup()
   Towers[0].vertex(3,47);
   Towers[0].vertex(47,47);
   Towers[0].endShape(CLOSE);
-  //tower2
+  //tower2 shape
   Towers[1]=createShape();
   Towers[1].beginShape();
   Towers[1].strokeWeight(3);
@@ -70,17 +70,18 @@ void setup()
     {
       Grid[x][y]=new Cell(x,y);
     }
-  }
+  }//actually draws grid creating all the different cell
 }
 
 void draw()
 {
-  drawBackground();
+  drawBackground();//just calls to a function in a different tab 
   
-  for(int i=0;i<AllTowers.size();i++)
+  for(int i=0;i<TowersList.size();i++)
   {
-    AllTowers.get(i).drawMe();
-  }
+    TowersList.get(i).drawMe();
+  }//draws the towers
+  //if mouse over start button
   fill(#DC143C);
   if(overRect(895,670,95,40))
   {
@@ -90,6 +91,7 @@ void draw()
   
   rect(895,670,95,40,5);//start button
   
+  //game stats text
   textSize(25);
   fill(255);
   if(level==1)
@@ -111,47 +113,50 @@ void draw()
   
   //checks where mouse is to draw grid outline
   mouseCheck();
-  //start button condition
+  //start button condition creates the spawns for monsters
   if(start)
   {
-    spawnTime++;
-    if (spawnTime == 25) 
+    Timer++;
+    if (Timer == 25) 
     { 
       if ( spawnMonsters == 0) 
       {
-        spawnTime = 26;
+        Timer = 26;
       } 
       else 
       {
         MonstersList.add(new Monsters(Health));
         spawnMonsters--;
-        spawnTime = 0;
+        Timer = 0;
       }
     }
 
     for (int j = 0; j < MonstersList.size(); j++) 
     {
       if (MonstersList.size() > 0)
+      {
         ((Monsters)MonstersList.get(j)).MonsterMovement();
-    } 
+      }
+    }//gives monsters movement
+    
     if (MonstersList.size() == 0) 
     {
-      if (spawnTime >= 26) {
-        spawnTime = 0;
+      if (Timer >= 26) {
+        Timer = 0;
         Health += 20;
         startMonsters+= 2;
         level += 1;
         start = false;
         spawnMonsters = startMonsters;   
       }
-    }
+    }//when all monsters gone adds conditions for next round
   }
   
-  for (int i=0; i<AllTowers.size(); i++) 
+  for (int i=0; i<TowersList.size(); i++) 
   {
-    AllTowers.get(i).shoot();
-  }
-}
+    TowersList.get(i).shoot();
+  }//responsible for allowing towers to damage the monsters
+}//END DRAW
 
 void mouseCheck()
 {
@@ -160,31 +165,31 @@ void mouseCheck()
   
   if( x<Grid.length && y<Grid[0].length)
   {
-   hoverCell = Grid[x][y];
-   hoverCell.outlineMe();
+   CheckHover = Grid[x][y];
+   CheckHover.outlineMe();
   }
-}
+}//checks where mouse is to draw grid outline
 
 void mousePressed()
 {
-  if(hoverCell!=null && mouseY<=650)
+  if(CheckHover!=null && mouseY<=650)
   {
-    if(hoverCell.Build())
+    if(CheckHover.Build())
     {
       if(money>=towerCost)
       {
-        hoverCell.buildOn(new Tower(hoverCell.x,hoverCell.y));
+        CheckHover.buildOn(new Tower(CheckHover.x,CheckHover.y));
         money-=towerCost;
       }
     }
-  }
+  }//allows building of towers assuming its on the grid aswell as having enough money
   if(!start)
   {
     if(overRect(895,670,95,40))
     {
       start=true;
     }
-  }
+  }//start button interaction
 }
 void keyPressed()
 {
@@ -194,5 +199,5 @@ void keyPressed()
     {
       start=true;
     }
-  }
+  }//start button interaction
 }
