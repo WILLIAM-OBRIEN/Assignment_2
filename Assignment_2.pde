@@ -1,9 +1,12 @@
 PShape enemy;//is the enemy shape
 PShape boss;//is the boss shape
+PImage space ;
 PShape Towers[]=new PShape[10];//contains array of tower shapes
 static float cell=1000/20;//decides size of cells
 int cols=20, rows=13;//decides size of grid map
 int Timer = 0;
+int QuotePick=0;
+int r;
 int gamestate=2;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
@@ -27,6 +30,7 @@ void setup()
 {
   size(1000,725);
   frameRate(120);
+  space =loadImage("space.jpg");
   //tower1 shape
   Towers[0]=createShape();
   Towers[0].beginShape();
@@ -280,9 +284,13 @@ void mousePressed()
   else if(gamestate==2)
   {
     if(overRect(400,600,200,100))
-      {
-        exit();
-      } 
+    {
+      exit();
+    } 
+    else if(overRect(800,400,100,50))
+    {
+      QuotePick=0;
+    }
   }
 }
 void keyPressed()

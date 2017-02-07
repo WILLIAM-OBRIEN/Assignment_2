@@ -13,7 +13,8 @@ void intro()
   textSize(25);
   text("-Towers cost 300 cash",50,200);
   text("-Bosses every 10 levels",50,250);
-  text("-SPACE or click start button for new level",50,300);
+  text("-When lives reach 0 its game over",50,300);
+  text("-SPACE or click start button for new level",50,350);
   fill(0);
   text("Continue!",445,655);
 }
@@ -61,14 +62,20 @@ void drawBackground()
   rect(-10,650,1050,10);//toolbar top
 }
 void endScreen()
-{
-  int r=3;
-  //r = int(random(1,5));
-  //background
-  fill(0);
-  noStroke();
-  rect(0,0,width,height);
+{  
   
+  if(QuotePick==0)
+  {
+    r = int(random(1,10));
+    QuotePick++;
+  }
+  
+  //background
+  image(space,0,0);
+  
+  fill(#FF05E2);
+  textSize(32);
+  text("YOU LOSE!",400,40);
   fill(255);
   if(r==1)
   {
@@ -82,27 +89,60 @@ void endScreen()
   }
   if(r==3)
   {
-    textSize(32);
-    text("\"Mission failed\nWe'll get em next time...\"\n\n                   -Winston Churchill",200,200);
+    textSize(25);
+    text("\"When I went to school they asked me what I want to be when I grew up.\nI wrote down \'life\'. They told me they didn\'t understand life.\nI told them I didn\'t understand the assignment.\"\n\n                                                                             -John Lenin",100,200);
   }
-  if(r==1)
+  if(r==4)
   {
     textSize(32);
-    text("\"Mission failed\nWe'll get em next time...\"\n\n                   -Winston Churchill",200,200);
+    text("\"I\'m dead\"\n\n                   -Nelson Mandela",200,200);
   }
-  if(r==1)
+  if(r==5)
   {
     textSize(32);
-    text("\"Mission failed\nWe'll get em next time...\"\n\n                   -Winston Churchill",200,200);
+    text("\"Neutron stars are so dense,\none gram would weigh 3 billion grams\"\n\n                                  -Leonard Susskind",200,200);
+  }
+  if(r==6)
+  {
+    textSize(32);
+    text("\"If the sun disappeared everyone \nwould get very cold\"\n\n                    -Neill Degrasse Tyson",200,200);
+  }
+  if(r==7)
+  {
+    textSize(32);
+    text("\"There are more cells in our brains,\nthan there are brains in our entire body\"\n\n                                  -Richard Dawkins",200,200);
+  }
+  if(r==8)
+  {
+    textSize(25);
+    text("\"People Use To Ask Me What You Wanna Be When You Get Older \nAnd I Would Say What A Stupid Question The Real Question Is\nWhat I Am Right Now\"\n\n                                  -Jaden Smith",100,200);
+  }
+  if(r==9)
+  {
+    textSize(32);
+    text("\"Take it easy dude.\nBut make sure you take it\"\n\n                                  -Terence McKenna",200,200);
+  }
+  if(r==10)
+  {
+    textSize(25);
+    text("\"Thats the amazing thing about evolution,\none day you have a butterfly and the very next day\nit might evolve into a frog or rabbit\"\n\n                                  -Carl Sagan",200,200);
   }
   
+  fill(100); 
+  if(overRect(800,400,100,50))
+  {fill(0,255,50);}
+  rect(800,400,100,50,5);
+  
+  fill(0);
+  textSize(16);
+  text(" Generate\n Quote!",800,420);
   
   fill(100); 
   if(overRect(400,600,200,100))
   {fill(255,0,0);}
   rect(400,600,200,100,10);
+  
   fill(0);
   textSize(25);
   text("EXIT GAME",440,655);
-  println(mouseX,mouseY);
 }
