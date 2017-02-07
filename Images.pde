@@ -1,3 +1,22 @@
+void intro()
+{
+  fill(0);
+  noStroke();
+  rect(0,0,width,height);
+  fill(100);
+  if(overRect(400,600,200,100))
+  {fill(0,255,255);}
+  rect(400,600,200,100,10);
+  fill(255);
+  textSize(32);
+  text("Tower Defense -- C15396226",270,100);
+  textSize(25);
+  text("-Towers cost 300 cash",50,200);
+  text("-Bosses every 10 levels",50,250);
+  text("-SPACE or click start button for new level",50,300);
+  fill(0);
+  text("Continue!",445,655);
+}
 void drawBackground()
 {
   //grid
@@ -40,4 +59,50 @@ void drawBackground()
   fill(#B0C4DE);
   stroke(0);
   rect(-10,650,1050,10);//toolbar top
+}
+void endScreen()
+{
+  int r=3;
+  //r = int(random(1,5));
+  //background
+  fill(0);
+  noStroke();
+  rect(0,0,width,height);
+  
+  fill(255);
+  if(r==1)
+  {
+    textSize(32);
+    text("\"Mission failed\nWe'll get em next time...\"\n\n                   -Winston Churchill",200,200);
+  }
+  if(r==2)
+  {
+    textSize(25);
+    text("\"In this moment, I am euphoric.\nNot because of any phony god’s blessing.\nBut because, I am enlightened by my intelligence\" \n\n                                                -Albert Einstein",100,200);
+  }
+  if(r==3)
+  {
+    textSize(32);
+    text("\"Mission failed\nWe'll get em next time...\"\n\n                   -Winston Churchill",200,200);
+  }
+  if(r==1)
+  {
+    textSize(32);
+    text("\"Mission failed\nWe'll get em next time...\"\n\n                   -Winston Churchill",200,200);
+  }
+  if(r==1)
+  {
+    textSize(32);
+    text("\"Mission failed\nWe'll get em next time...\"\n\n                   -Winston Churchill",200,200);
+  }
+  
+  
+  fill(100); 
+  if(overRect(400,600,200,100))
+  {fill(255,0,0);}
+  rect(400,600,200,100,10);
+  fill(0);
+  textSize(25);
+  text("EXIT GAME",440,655);
+  println(mouseX,mouseY);
 }

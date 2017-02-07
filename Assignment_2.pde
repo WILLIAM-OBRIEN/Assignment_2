@@ -4,7 +4,7 @@ PShape Towers[]=new PShape[10];//contains array of tower shapes
 static float cell=1000/20;//decides size of cells
 int cols=20, rows=13;//decides size of grid map
 int Timer = 0;
-int gamestate=0;
+int gamestate=2;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();
@@ -223,7 +223,15 @@ void draw()
     {
       TowersList.get(i).shoot();
     }//responsible for allowing towers to damage the monsters
+    if(lives<=0)
+    {
+      gamestate=2;
+    }
   }//end gamestate1
+  else if(gamestate==2)
+  {
+    endScreen();
+  }
 }//END DRAW
 
 void mouseCheck()
@@ -267,6 +275,14 @@ void mousePressed()
         start=true;
       }
     }//start button interaction
+  }
+  
+  else if(gamestate==2)
+  {
+    if(overRect(400,600,200,100))
+      {
+        exit();
+      } 
   }
 }
 void keyPressed()
