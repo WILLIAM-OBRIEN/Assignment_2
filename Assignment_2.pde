@@ -1,6 +1,5 @@
 PShape enemy;//is the enemy shape
 PShape boss;//is the boss shape
-PImage space ;
 PShape Towers[]=new PShape[10];//contains array of tower shapes
 static float cell=1000/20;//decides size of cells
 int cols=20, rows=13;//decides size of grid map
@@ -26,11 +25,42 @@ boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
 Cell CheckHover=null;
+
+//variables used to map stars in gamestate 2
+int stars=1;
+float[] xPos = new float[250];
+float[] yPos = new float[250];
+float[] xVel = new float[250];
+float[] yVel = new float[250];
+float[] s = new float[250]; 
 void setup() 
 {
   size(1000,725);
   frameRate(120);
-  space =loadImage("space.jpg");
+  //makes stars coordinates + size random generated and places the information in arrays
+  for (int i=0; i < 250; i++) 
+  {
+    xPos[i] = random(1, 1000);
+  }
+
+  for (int i=0; i < 250; i++) 
+  {
+    yPos[i] = random(1, 649);
+  }
+
+  for (int i=0; i < 250; i++) 
+  {
+    xVel[i] = random(-10, 10);
+  }
+
+  for (int i=0; i < 250; i++) 
+  {
+    yVel[i] = random(-10, 10);
+  }
+  for (int i=0; i < 250; i++) 
+  {
+    s[i] = random(1, 6);
+  }
   //tower1 shape
   Towers[0]=createShape();
   Towers[0].beginShape();

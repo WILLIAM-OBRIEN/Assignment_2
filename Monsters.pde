@@ -1,7 +1,7 @@
 class Monsters
 {
   int xpos = 155;
-  int ypos = -1;
+  int ypos = 25;
   int speed = 2;
   float HP;
   PShape monster;

@@ -55,11 +55,24 @@ void drawBackground()
   rect(650,500,200,50);
   rect(850,0,50,550);
   
+  fill(100);
+  rect(160,0,30,50);//spawn door
+  fill(200);
+  ellipse(175,0,75,75);//spawn tower
+  fill(150);
+  ellipse(175,0,50,50);//spawn tower 3rd top
+  fill(100);
+  ellipse(175,0,25,25);//spawn tower 2nd top
+  fill(0);
+  ellipse(175,0,10,10);//spawn tower top
+  
+  
   fill(150,180);
   rect(0, 650, 1000, 150); // toolbar
   fill(#B0C4DE);
   stroke(0);
   rect(-10,650,1050,10);//toolbar top
+  println(mouseX,mouseY);
 }
 void endScreen()
 {  
@@ -69,10 +82,18 @@ void endScreen()
     r = int(random(1,10));
     QuotePick++;
   }
-  
-  //background
-  image(space,0,0);
-  
+  //star background
+  background(0);
+    if (stars==1)
+    {
+      fill(255);
+
+      for (int i=0; i < 250; i++) 
+      {
+        noStroke ();
+        ellipse(xPos[i], yPos[i], s[i], s[i]);
+      }
+    }//plots stars made in setup
   fill(#FF05E2);
   textSize(32);
   text("YOU LOSE!",400,40);
