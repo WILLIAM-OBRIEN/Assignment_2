@@ -14,7 +14,7 @@ ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towe
 ArrayList MonstersList = new ArrayList();//all normal monsters
 ArrayList BossList = new ArrayList();//all bosses
 int money = 1000;
-int lives = 1;
+int lives = 10;
 int level = 1;
 int score=0;
 int towerCost = 300;
@@ -40,7 +40,7 @@ float[] s = new float[250];
 void setup() 
 {
   size(1000,725);
-  frameRate(140);
+  frameRate(80);
   //makes stars coordinates + size random generated and places the information in arrays
   for (int i=0; i < 250; i++) 
   {
