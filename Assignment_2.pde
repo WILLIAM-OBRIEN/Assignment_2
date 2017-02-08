@@ -9,6 +9,10 @@ int r;
 int gamestate=0;//choses what part of game appears
 int flowerColors=1;
 int alpha;
+//creates lava movement
+int lava=255;
+int yellow=0;
+int change=1;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();//all normal monsters

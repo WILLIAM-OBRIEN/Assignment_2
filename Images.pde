@@ -84,7 +84,28 @@ void drawBackground()
   rect(600,500,50,100);
   rect(650,500,200,50);
   rect(850,0,50,550);
-  
+  //lava
+  fill(lava,yellow,0);
+  rect(100,150,60,200,20);
+  rect(350,200,80,25,20);
+  rect(280,50,60,50,20);
+  ellipse(150,550,200,100);
+  if(change==1)
+  {
+    yellow++;
+    if(yellow==200)
+    {
+      change=0;
+    }
+  }
+  else if(change==0)
+  {
+    yellow--;
+    if(yellow==50)
+    {
+      change=1;
+    }
+  }
   fill(100);
   rect(160,0,30,50);//spawn door
   fill(200);
