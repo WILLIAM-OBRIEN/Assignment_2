@@ -9,15 +9,23 @@ class Tower
   
   void drawMe()
   {
-    shape(Towers[1],cellX*cell,cellY*cell);
+    if(upgrade)
+    {
+      shape(Towers[0],cellX*cell,cellY*cell);
+    }
+    else
+    {
+      shape(Towers[1],cellX*cell,cellY*cell);
+    }
   }
   
-  Tower(int x, int y)
+  Tower(int x, int y, boolean upgradeable)
   {
     cellX=x;
     cellY=y;
     location.x = cellX*cell;
     location.y = cellY*cell;
+    upgrade = upgradeable;
   }
   void shoot()
   {  
@@ -27,11 +35,23 @@ class Tower
       {
         if (dist(((BossMonster)BossList.get(0)).xpos, ((BossMonster)BossList.get(0)).ypos, location.x, location.y) < Range) 
         {
-          FireRate++; 
-          if(FireRate==5)
+          if(upgrade)
           {
-            ((BossMonster)BossList.get(0)).damage(); 
-            FireRate = 0;
+            FireRate++;
+          }
+          FireRate++; 
+          if(FireRate==6)
+          {
+            if(upgrade)
+            {
+              ((BossMonster)BossList.get(0)).upgradeDamage(); 
+              FireRate = 0;
+            }
+            else
+            {
+              ((BossMonster)BossList.get(0)).damage(); 
+              FireRate = 0;
+            }
           }
         }
       }
@@ -42,11 +62,23 @@ class Tower
       {
         if (dist(((Monsters)MonstersList.get(0)).xpos, ((Monsters)MonstersList.get(0)).ypos, location.x, location.y) < Range) 
         {
-          FireRate++; 
-          if(FireRate==5)
+          if(upgrade)
           {
-            ((Monsters)MonstersList.get(0)).damage(); 
-            FireRate = 0;
+            FireRate++;
+          }
+          FireRate++; 
+          if(FireRate==6)
+          {
+            if(upgrade)
+            {
+              ((Monsters)MonstersList.get(0)).damage(); 
+              FireRate = 0;
+            }
+            else
+            {
+              ((Monsters)MonstersList.get(0)).damage(); 
+              FireRate = 0;
+            }
           }
         }
       }

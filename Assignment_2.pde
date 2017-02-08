@@ -6,7 +6,7 @@ int cols=20, rows=13;//decides size of grid map
 int Timer = 0;
 int QuotePick=0;
 int r;
-int gamestate=2;
+int gamestate=0;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();
@@ -15,12 +15,13 @@ int money = 1000;
 int lives = 10;
 int level = 1;
 int towerCost = 300;
+int upgradeCost = 500;
 int startMonsters= 5;
 int startBoss= 1;
 int spawnMonsters = startMonsters;
 int spawnBoss = startBoss;
 float Health=100;
-float bossHealth=2000;
+float bossHealth=3500;
 boolean start;
 //end
 Cell[][] Grid = new Cell[cols][rows];
@@ -36,7 +37,7 @@ float[] s = new float[250];
 void setup() 
 {
   size(1000,725);
-  frameRate(120);
+  frameRate(60);
   //makes stars coordinates + size random generated and places the information in arrays
   for (int i=0; i < 250; i++) 
   {
@@ -65,11 +66,19 @@ void setup()
   Towers[0]=createShape();
   Towers[0].beginShape();
   Towers[0].strokeWeight(3);
-  Towers[0].fill(255,69,0);
-  Towers[0].vertex(3,3);
-  Towers[0].vertex(47,3);
-  Towers[0].vertex(3,47);
-  Towers[0].vertex(47,47);
+  Towers[0].fill(#DAA520);
+  Towers[0].vertex(5,5);
+  Towers[0].vertex(15,5);
+  Towers[0].vertex(15,15);
+  Towers[0].vertex(20,15);
+  Towers[0].vertex(20,5);
+  Towers[0].vertex(30,5);
+  Towers[0].vertex(30,15);
+  Towers[0].vertex(35,15);
+  Towers[0].vertex(35,5);
+  Towers[0].vertex(45,5);
+  Towers[0].vertex(45,45);
+  Towers[0].vertex(5,45);
   Towers[0].endShape(CLOSE);
   //tower2 shape
   Towers[1]=createShape();
@@ -291,24 +300,42 @@ void mousePressed()
   }
   else if(gamestate==1)
   {
-    if(CheckHover!=null && mouseY<=650)
+    if(mouseButton==LEFT)
     {
-      if(CheckHover.Build())
+      if(CheckHover!=null && mouseY<=650)
       {
-        if(money>=towerCost)
+        if(CheckHover.Build())
         {
-          CheckHover.buildOn(new Tower(CheckHover.x,CheckHover.y));
-          money-=towerCost;
+          if(money>=towerCost)
+          {
+            CheckHover.buildOn(new Tower(CheckHover.x,CheckHover.y,false));
+            money-=towerCost;
+          }
+        }
+      }//allows building of towers assuming its on the grid aswell as having enough money
+      if(!start)
+      {
+        if(overRect(895,670,95,40))
+        {
+          start=true;
+        }
+      }//start button interaction
+    }//end left mouse button
+    
+    else if(mouseButton==RIGHT)
+    {
+      if(CheckHover!=null && mouseY<=650)
+      {
+        if(CheckHover.Build())
+        {
+          if(money>=upgradeCost)
+          {
+            CheckHover.buildOn(new Tower(CheckHover.x,CheckHover.y,true));
+            money-=upgradeCost;
+          }
         }
       }
-    }//allows building of towers assuming its on the grid aswell as having enough money
-    if(!start)
-    {
-      if(overRect(895,670,95,40))
-      {
-        start=true;
-      }
-    }//start button interaction
+    }//end right mouse used to upgrade
   }
   
   else if(gamestate==2)

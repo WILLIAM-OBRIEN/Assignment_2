@@ -17,6 +17,10 @@ class Monsters
   {
     HP -= 5;
   }
+  void upgradeDamage() 
+  {
+    HP -= 10;
+  }
   void MonsterMovement() 
   {
     if (ypos<65 && xpos==155) 
