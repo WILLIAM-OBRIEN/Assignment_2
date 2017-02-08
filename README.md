@@ -1,15 +1,16 @@
 OOP Assignment 2 
 
 -----Tower defense explanation-----
--The aim of tower defense is to stop what is spawning on the LEFT to goto somewhere offscreen on the RIGHT.
 
--You must place your towers along the pathway which will shoot down the LEFT spawning monsters.
+1.-The aim of tower defense is to stop what is spawning on the LEFT to goto somewhere offscreen on the RIGHT.
 
--These towers have a limited range so place them near the path.
+2.-You must place your towers along the pathway which will shoot down the LEFT spawning monsters.
 
--There is an increased enemy spawn with each level and they get progressively more health.
+3.-These towers have a limited range so place them near the path.
 
--It is best to group up towers together.
+4.-There is an increased enemy spawn with each level and they get progressively more health.
+
+5.-It is best to group up towers together.
 
 ---For an easier explanation ===> https://www.youtube.com/watch?v=pQOY1OU-Muk (THIS IS NOT MY GAME SUBMISSION LINK)
 
