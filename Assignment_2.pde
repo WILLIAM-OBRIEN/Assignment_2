@@ -8,12 +8,13 @@ int QuotePick=0;
 int r;
 int gamestate=0;//choses what part of game appears
 int flowerColors=1;
+int alpha;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();//all normal monsters
 ArrayList BossList = new ArrayList();//all bosses
 int money = 1000;
-int lives = 10;
+int lives = 1;
 int level = 1;
 int score=0;
 int towerCost = 300;
@@ -362,6 +363,7 @@ void mousePressed()
     else if(overRect(800,400,100,50))
     {
       QuotePick=0;
+      alpha=1;
     }
   }
 }

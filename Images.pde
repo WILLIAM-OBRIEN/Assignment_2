@@ -102,11 +102,9 @@ void drawBackground()
   fill(#B0C4DE);
   stroke(0);
   rect(-10,650,1050,10);//toolbar top
-  println(mouseX,mouseY);
 }
 void endScreen()
 {  
-  
   if(QuotePick==0)
   {
     r = int(random(1,10));
@@ -128,7 +126,7 @@ void endScreen()
   textSize(32);
   text("YOU LOSE!",400,40);
   text("Your score:" + " " + nf(score,7), 300, 80);
-  fill(255);
+  fill(255,alpha);
   if(r==1)
   {
     textSize(32);
@@ -179,7 +177,7 @@ void endScreen()
     textSize(25);
     text("\"Thats the amazing thing about evolution,\none day you have a butterfly and the very next day\nit might evolve into a frog or rabbit\"\n\n                                  -Carl Sagan",200,200);
   }
-  
+  alpha+=3;
   fill(100); 
   if(overRect(800,400,100,50))
   {fill(0,255,50);}
