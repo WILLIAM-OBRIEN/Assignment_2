@@ -11,19 +11,32 @@ void intro()
   textSize(32);
   text("Tower Defense -- C15396226",270,100);
   textSize(25);
-  text("-Towers cost 300 cash",50,200);
-  text("-Bosses every 10 levels",50,250);
-  text("-When lives reach 0 its game over",50,300);
-  text("-SPACE or click start button for new level",50,350);
+  text("-Orange Towers cost 300 cash and gold towers cost 500",50,200);
+  text("-Left click to place orange and right click for gold",50,250);
+  text("-Bosses every 10 levels",50,300);
+  text("-When lives reach 0 its game over",50,350);
+  text("-SPACE or click start button for new level",50,400);
   fill(0);
   text("Continue!",445,655);
 }
 void drawBackground()
 {
-  //grid
-  fill(#8b4513);
+  //grass  
+  fill(#9ACD32);
   noStroke();
   rect(0,0,width,height);
+  rect(660,660,50,50);
+  //mud
+  fill(#8b4513);
+  rect(660,560,300,200,80);
+  //flowers
+  for(int i=725;i<925;i+=50)
+  {
+    drawFlower(i,625);
+    drawFlower(i,675);
+  }
+  flowerColors=0;
+  strokeWeight(5);
   //pathOutline
   fill(100);
   rect(140,0,70,100);
@@ -58,11 +71,11 @@ void drawBackground()
   fill(100);
   rect(160,0,30,50);//spawn door
   fill(200);
-  ellipse(175,0,75,75);//spawn tower
+  ellipse(175,0,100,75);//spawn tower
   fill(150);
-  ellipse(175,0,50,50);//spawn tower 3rd top
+  ellipse(175,0,75,50);//spawn tower 3rd top
   fill(100);
-  ellipse(175,0,25,25);//spawn tower 2nd top
+  ellipse(175,0,55,30);//spawn tower 2nd top
   fill(0);
   ellipse(175,0,10,10);//spawn tower top
   
@@ -116,7 +129,7 @@ void endScreen()
   if(r==4)
   {
     textSize(32);
-    text("\"I\'m dead\"\n\n                   -Nelson Mandela",200,200);
+    text("\"They Don’t Think It Be Like It Is, But It Do\"\n\n                   -Nelson Mandela",200,200);
   }
   if(r==5)
   {
