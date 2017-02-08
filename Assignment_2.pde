@@ -6,7 +6,8 @@ int cols=20, rows=13;//decides size of grid map
 int Timer = 0;
 int QuotePick=0;
 int r;
-int gamestate=0;
+int gamestate=1;
+int flowerColors=1;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
 ArrayList MonstersList = new ArrayList();

@@ -25,10 +25,20 @@ void drawBackground()
   fill(#9ACD32);
   noStroke();
   rect(0,0,width,height);
-  rect(660,660,50,50);
   //mud
   fill(#8b4513);
   rect(660,560,300,200,80);
+  //split
+  fill(140);
+  rect(0,0,500,725);
+  //platau
+  fill(50);
+  rect(0,0,140,40);
+  rect(210,0,140,40);
+  //border
+  fill(#CD853F);
+  stroke(0);
+  rect(495,0,10,725);
   //flowers
   for(int i=725;i<925;i+=50)
   {
