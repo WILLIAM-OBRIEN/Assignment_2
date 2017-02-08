@@ -29,4 +29,4 @@ Only tested for windows and was able to get consistent 80 fps.
 NOTE--
 Game was originally intended to be a cluedo game but I decided to go with something less complicated in the end.
 
-YouTube link for Games assignment : https://www.youtube.com/watch?v=HW3XAF31Kjk&feature=youtu.be
+YouTube link for Games assignment : https://www.youtube.com/watch?v=9I3tutjXa38
