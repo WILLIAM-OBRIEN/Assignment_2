@@ -14,7 +14,7 @@ ArrayList MonstersList = new ArrayList();
 ArrayList BossList = new ArrayList();
 int money = 1000;
 int lives = 10;
-int level = 1;
+int level = 10;
 int towerCost = 300;
 int upgradeCost = 500;
 int startMonsters= 5;
@@ -38,7 +38,7 @@ float[] s = new float[250];
 void setup() 
 {
   size(1000,725);
-  frameRate(60);
+  frameRate(140);
   //makes stars coordinates + size random generated and places the information in arrays
   for (int i=0; i < 250; i++) 
   {
@@ -267,6 +267,12 @@ void draw()
     {
       TowersList.get(i).shoot();
     }//responsible for allowing towers to damage the monsters
+    fill(100);
+    stroke(0);
+    for(int i=0;i<40;i+=20)
+    {
+      rect(825,000+i,100,20,10);
+    }//draws pipe thing
     if(lives<=0)
     {
       gamestate=2;

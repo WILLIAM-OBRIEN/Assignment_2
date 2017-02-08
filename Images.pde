@@ -89,6 +89,13 @@ void drawBackground()
   fill(0);
   ellipse(175,0,10,10);//spawn tower top
   
+  //civ sign
+  stroke(0);
+  fill(#DEB887);
+  rect(700,100,100,100);
+  fill(0);
+  textSize(14);
+  text(" Defenseless\n town :(\n  ----->",700,130);
   
   fill(150,180);
   rect(0, 650, 1000, 150); // toolbar
