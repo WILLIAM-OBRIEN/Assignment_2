@@ -6,16 +6,23 @@ void intro()
   fill(100);
   if(overRect(400,600,200,100))
   {fill(0,255,255);}
-  rect(400,600,200,100,10);
-  fill(255);
+  rect(400,600,200,100,10);  
+  fill(#DAA520);
   textSize(32);
-  text("Tower Defense -- C15396226",270,100);
+  text("Protect the village! -- Tower Defense",200,100);
+  fill(255,0,0);
+  textSize(28);
+  text("You must defeat the evil cats and mice before they reach the village!!",20,170);
+  fill(255);
   textSize(25);
-  text("-Orange Towers cost 300 cash and gold towers cost 500",50,200);
-  text("-Left click to place orange and right click for gold",50,250);
-  text("-Bosses every 10 levels",50,300);
-  text("-When lives reach 0 its game over",50,350);
-  text("-SPACE or click start button for new level",50,400);
+  text("-Orange Towers (weak) cost 300 cash and Gold towers (strong) cost 500",50,250);
+  text("-Left click to place orange and right click for gold",50,300);
+  text("-Bosses(cats) every 10 levels",50,350);
+  text("-Mice give 50cash and Cats give 500cash",50,400);
+  text("-When lives reach 0 its game over",50,450);
+  text("-SPACE or click start button for new level",50,500);
+  fill(#808000);
+  text("<<See read me for explanation what of tower defense is!>>",50,550);
   fill(0);
   text("Continue!",445,655);
 }

@@ -174,11 +174,11 @@ void draw()
     {
       text("N.LVL!", 905, 700);
     }
-    fill(255);
+    fill(0,255,255);
     text("Lives:" + " " + nf(lives, 2), 350, 700);
-    fill(255);
+    fill(#FF4500);
     text("Level:" + " " + nf(level, 2), 100, 700);
-    fill(255);
+    fill(0,255,0);
     if(money<50)
     {fill(255,0,0);}//if not enough money
     text("Cash:" + " " + nf(money, 2), 600, 700);
