@@ -85,11 +85,13 @@ class Monsters
       {
         BossList.remove(this);
         money += 500;
+        score +=500;
       }
       else
       {
         MonstersList.remove(this);
         money += 50;
+        score +=50;
       }
     }
     //pass endpoint loss
@@ -125,7 +127,14 @@ class Monsters
     
     // Draw bar
     noStroke();
-    HealthRemains = (HP / Health) * HealthBarWidth;
+    if(monster==boss)
+    {
+      HealthRemains = (HP / bossHealth) * HealthBarWidth;
+    }
+    else
+    {
+      HealthRemains = (HP / Health) * HealthBarWidth;
+    }
     rect(0, -15, HealthRemains, 10);    
     popMatrix();
   }

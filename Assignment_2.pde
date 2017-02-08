@@ -6,15 +6,16 @@ int cols=20, rows=13;//decides size of grid map
 int Timer = 0;
 int QuotePick=0;
 int r;
-int gamestate=1;
+int gamestate=0;//choses what part of game appears
 int flowerColors=1;
 //Gameplay variables
 ArrayList <Tower> TowersList=new ArrayList<Tower>();//contains array of all towers
-ArrayList MonstersList = new ArrayList();
-ArrayList BossList = new ArrayList();
+ArrayList MonstersList = new ArrayList();//all normal monsters
+ArrayList BossList = new ArrayList();//all bosses
 int money = 1000;
 int lives = 10;
-int level = 10;
+int level = 1;
+int score=0;
 int towerCost = 300;
 int upgradeCost = 500;
 int startMonsters= 5;
@@ -267,12 +268,19 @@ void draw()
     {
       TowersList.get(i).shoot();
     }//responsible for allowing towers to damage the monsters
+    
+    //start end pipe
     fill(100);
     stroke(0);
     for(int i=0;i<40;i+=20)
     {
       rect(825,000+i,100,20,10);
     }//draws pipe thing
+    
+    //start score tracker
+    fill(#FF00FF);
+    text("Score:" + " " + nf(score,7), 800, 20);
+    //end score tracker
     if(lives<=0)
     {
       gamestate=2;

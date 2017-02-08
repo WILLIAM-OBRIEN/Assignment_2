@@ -1,4 +1,3 @@
-
 void drawFlower(float x, float y)
 {
   pushMatrix();

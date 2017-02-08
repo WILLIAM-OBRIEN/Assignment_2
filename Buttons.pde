@@ -8,4 +8,4 @@ boolean overRect(int x, int y, int width, int height)
   {
     return false;
   }
-}
+}//buttons passed here to check if mouse has pressed or is hovered over

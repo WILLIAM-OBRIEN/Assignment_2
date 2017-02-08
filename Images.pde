@@ -127,6 +127,7 @@ void endScreen()
   fill(#FF05E2);
   textSize(32);
   text("YOU LOSE!",400,40);
+  text("Your score:" + " " + nf(score,7), 300, 80);
   fill(255);
   if(r==1)
   {
